@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  web:
+    build: ./docker/web
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - backend
+  backend:
+    build: ./docker/backend
+    volumes:
+      - type: bind
+        source: ./source/backend
+        target: /home/laravel
+  database:
+    build: ./docker/database
+    ports:
+      - "3306:3306"
+    volumes:
+      - type: volume
+        source: db-store
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+volumes:
+  db-store:
