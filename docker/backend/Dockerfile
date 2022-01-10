@@ -13,4 +13,4 @@ RUN apk --update-cache --no-cache add tzdata && \
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
-WORKDIR /home/laravel
+WORKDIR /home/backend

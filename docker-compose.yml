@@ -12,7 +12,16 @@ services:
     volumes:
       - type: bind
         source: ./source/backend
-        target: /home/laravel
+        target: /home/backend
+  frontend:
+    build: ./docker/frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: ./source/frontend
+        target: /home/frontend
+    tty: true
   database:
     build: ./docker/database
     ports:
