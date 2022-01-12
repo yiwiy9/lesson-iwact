@@ -21,7 +21,7 @@ services:
       - type: bind
         source: ./source/frontend
         target: /home/frontend
-    tty: true
+    command: sh -c "npm install && npm start"
   database:
     build: ./docker/database
     ports:
