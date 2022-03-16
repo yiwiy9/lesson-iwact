@@ -15,7 +15,7 @@ services:
         target: /home/backend
   frontend:
     build: ./docker/frontend
-    ports:
+    ports: # TODO: Nginxでプロキシする
       - 3000:3000
     volumes:
       - type: bind
@@ -37,5 +37,6 @@ services:
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    platform: linux/amd64
 volumes:
   db-store:

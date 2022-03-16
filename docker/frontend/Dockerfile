@@ -1,4 +1,4 @@
-FROM node:16-alpine3.15
+FROM node:16-alpine3.14
 
 # timezoneをJSTにする
 RUN apk --update-cache --no-cache add tzdata && \
